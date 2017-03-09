@@ -94,6 +94,8 @@
 -(void) centerIconOverTextWithSpacing: (CGFloat) spacing {
   CGSize size = self.imageView.image.size;
   
+  #ifdef TARGET_IS_EXTENSION
+
   if ([UIDevice currentDevice].systemVersion.floatValue >= 9.0 && [UIApplication sharedApplication].userInterfaceLayoutDirection == UIUserInterfaceLayoutDirectionRightToLeft) {
     self.titleEdgeInsets = UIEdgeInsetsMake(0.0,
                                             0.0,
@@ -117,6 +119,9 @@
                                             0.0,
                                             -size.width);
   }
+  
+ #else
+ #endif
 }
 
 -(void) setPadding:(CGFloat) padding
